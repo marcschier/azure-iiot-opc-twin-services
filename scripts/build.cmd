@@ -124,9 +124,9 @@ goto :eof
 echo Building Linux images...
 call :switch_to_mode linux
 for %%i in (%projects%) do (
-    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile azure-iiot-opc-%%i-service
+    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile azure-iiot-opc-ua-%%i-service
     if not !ERRORLEVEL! == 0 exit /b !ERRORLEVEL!
-    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile.debug azure-iiot-opc-%%i-service -debug
+    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile.debug azure-iiot-opc-ua-%%i-service -debug
     if not !ERRORLEVEL! == 0 exit /b !ERRORLEVEL!
 )
 call :revert_to_original
@@ -140,7 +140,7 @@ goto :eof
 echo Building Windows images...
 call :switch_to_mode windows
 for %%i in (%projects%) do (
-    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile.Windows azure-iiot-opc-%%i-service -windows
+    call :build_image src\Microsoft.Azure.IIoT.OpcUa.Services.%%i\docker\Dockerfile.Windows azure-iiot-opc-ua-%%i-service -windows
     if not !ERRORLEVEL! == 0 exit /b !ERRORLEVEL!
 )
 call :revert_to_original
